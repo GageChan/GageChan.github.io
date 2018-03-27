@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[为什么说ArrayList线程不安全]]></title>
+    <url>%2F2018%2F03%2F27%2F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4ArrayList%E7%BA%BF%E7%A8%8B%E4%B8%8D%E5%AE%89%E5%85%A8%2F</url>
+    <content type="text"><![CDATA[概要介绍所谓线程安全，指多个线程同时操作同一个对象的时候，采用了加锁机制，当第一个线程在操作这个对象的时候，后面将要操作该对象的线程都得等第一个对象操作完成再执行，这样就能保证数据的完整性。 举例：List接口下面有两个，一个是ArrayList,一个是Vector。从源码的角度来分析，因为Vector的方法前加了，synchronized 关键字，也就是同步的意思，sun公司希望Vector是线程安全的，而希望arraylist是高效的，缺点就是另外的优点。 说下原理（百度的，很好理解）： 一个 ArrayList ，在添加一个元素的时候，它可能会有两步来完成：1:在Item[size]的位置存放该元素;2:增大size的值。在单线程运行的情况下，如果size=0,添加一个元素后，此元素位置在0，size=1;而如果是多线程的情况下；比如有两个线程，线程A先将元素存放在位置0，但是此时CPU的调度线程A暂停，线程B就有了运行的机会，线程B向此ArrayList中添加元素，此时size依然等于0，(我们假设的是添加一个元素是要两个步骤哦，而线程A仅仅完成了步骤1),所以线程B也将元素存放在位置0。然后线程A和线程B都继续运行，都增加 Size 的值。下面为我们写段代码来验证123456789101112131415161718192021222324252627282930final List&lt;Integer&gt; list = new ArrayList&lt;&gt;();for (int i = 0;i &lt; 10000;i++)&#123; list.add(i);&#125;System.out.println("第一次添加完成后list的数量："+list.size());for (int i = 0;i &lt; 10;i++)&#123; new Thread()&#123; @Override public void run() &#123; for (int j = 0;j &lt; 1000;j++)&#123; list.remove(0); &#125; &#125; &#125;.start();&#125;Thread.sleep(10000);System.out.println("移除完成后List的数量："+list.size());for (int i = 0;i &lt; 10;i++)&#123; new Thread()&#123; @Override public void run() &#123; for (int j = 0;j &lt; 1000;j++)&#123; list.add(j*10); &#125; &#125; &#125;.start();&#125;Thread.sleep(10000);System.out.println("第二次添加完成后List的数量："+list.size()); 输出的结果是：123第一次添加完成后list的数量：10000移除完成后List的数量：393第二次添加完成后List的数量：9319 而我们期望的结果是：123第一次添加完成后list的数量：10000移除完成后List的数量：0第二次添加完成后List的数量：10000 这就是因为ArrayList没有加同步锁导致的，下面再来一段Vector的代码：123456789101112131415161718192021222324252627282930final List&lt;Integer&gt; list = new Vector&lt;&gt;();for (int i = 0;i &lt; 10000;i++)&#123; list.add(i);&#125;System.out.println("第一次添加完成后list的数量："+list.size());for (int i = 0;i &lt; 10;i++)&#123; new Thread()&#123; @Override public void run() &#123; for (int j = 0;j &lt; 1000;j++)&#123; list.remove(0); &#125; &#125; &#125;.start();&#125;Thread.sleep(10000);System.out.println("移除完成后List的数量："+list.size());for (int i = 0;i &lt; 10;i++)&#123; new Thread()&#123; @Override public void run() &#123; for (int j = 0;j &lt; 1000;j++)&#123; list.add(j*10); &#125; &#125; &#125;.start();&#125;Thread.sleep(10000);System.out.println("第二次添加完成后List的数量："+list.size()); 输出结果：123第一次添加完成后list的数量：10000移除完成后List的数量：0第二次添加完成后List的数量：10000]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F03%2F26%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>

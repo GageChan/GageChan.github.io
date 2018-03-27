@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java," />
 
 
 
@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="java 数据库 mysql linux node vue.js">
+<meta name="description" content="概要介绍所谓线程安全，指多个线程同时操作同一个对象的时候，采用了加锁机制，当第一个线程在操作这个对象的时候，后面将要操作该对象的线程都得等第一个对象操作完成再执行，这样就能保证数据的完整性。 举例：List接口下面有两个，一个是ArrayList,一个是Vector。从源码的角度来分析，因为Vector的方法前加了，synchronized 关键字，也就是同步的意思，sun公司希望Vector是线">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://GageChan.com/2018/03/26/hello-world/index.html">
+<meta property="og:title" content="为什么说ArrayList线程不安全">
+<meta property="og:url" content="http://GageChan.com/2018/03/27/为什么说ArrayList线程不安全/index.html">
 <meta property="og:site_name" content="GageChan&#39;s blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="概要介绍所谓线程安全，指多个线程同时操作同一个对象的时候，采用了加锁机制，当第一个线程在操作这个对象的时候，后面将要操作该对象的线程都得等第一个对象操作完成再执行，这样就能保证数据的完整性。 举例：List接口下面有两个，一个是ArrayList,一个是Vector。从源码的角度来分析，因为Vector的方法前加了，synchronized 关键字，也就是同步的意思，sun公司希望Vector是线">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-27T03:34:57.624Z">
+<meta property="og:updated_time" content="2018-03-27T15:13:59.889Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="为什么说ArrayList线程不安全">
+<meta name="twitter:description" content="概要介绍所谓线程安全，指多个线程同时操作同一个对象的时候，采用了加锁机制，当第一个线程在操作这个对象的时候，后面将要操作该对象的线程都得等第一个对象操作完成再执行，这样就能保证数据的完整性。 举例：List接口下面有两个，一个是ArrayList,一个是Vector。从源码的角度来分析，因为Vector的方法前加了，synchronized 关键字，也就是同步的意思，sun公司希望Vector是线">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://GageChan.com/2018/03/26/hello-world/"/>
+  <link rel="canonical" href="http://GageChan.com/2018/03/27/为什么说ArrayList线程不安全/"/>
 
 
 
 
 
-     <title>Hello World | GageChan's blog</title>
+     <title>为什么说ArrayList线程不安全 | GageChan's blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://GageChan.com/2018/03/26/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://GageChan.com/2018/03/27/为什么说ArrayList线程不安全/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="GageChan">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">为什么说ArrayList线程不安全</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-26T23:32:09+08:00">
-                2018-03-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T22:42:28+08:00">
+                2018-03-27
               </time>
             
 
@@ -338,6 +338,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -348,8 +370,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/03/26/hello-world/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/03/26/hello-world/" itemprop="commentsCount"></span>
+                <a href="/2018/03/27/为什么说ArrayList线程不安全/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/03/27/为什么说ArrayList线程不安全/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -373,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  78
+                  851
                 </span>
               
 
@@ -389,7 +411,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -410,15 +432,12 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2 id="概要介绍"><a href="#概要介绍" class="headerlink" title="概要介绍"></a>概要介绍</h2><p>所谓线程安全，指多个线程同时操作同一个对象的时候，采用了加锁机制，当第一个线程在操作这个对象的时候，后面将要操作该对象的线程都得等第一个对象操作完成再执行，这样就能保证数据的完整性。</p>
+<h2 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h2><p>List接口下面有两个，一个是ArrayList,一个是Vector。从源码的角度来分析，因为Vector的方法前加了，synchronized 关键字，也就是同步的意思，sun公司希望Vector是线程安全的，而希望arraylist是高效的，缺点就是另外的优点。 说下原理（百度的，很好理解）： 一个 ArrayList ，在添加一个元素的时候，它可能会有两步来完成：<br>1:在Item[size]的位置存放该元素;<br>2:增大size的值。<br>在单线程运行的情况下，如果size=0,添加一个元素后，此元素位置在0，size=1;而如果是多线程的情况下；比如有两个线程，线程A先将元素存放在位置0，但是此时CPU的调度线程A暂停，线程B就有了运行的机会，线程B向此ArrayList中添加元素，此时size依然等于0，(我们假设的是添加一个元素是要两个步骤哦，而线程A仅仅完成了步骤1),所以线程B也将元素存放在位置0。然后线程A和线程B都继续运行，都增加 Size 的值。<br>下面为我们写段代码来验证<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">10000</span>;i++)&#123;</span><br><span class="line">    list.add(i);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(<span class="string">"第一次添加完成后list的数量："</span>+list.size());</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; <span class="number">1000</span>;j++)&#123;</span><br><span class="line">                list.remove(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.start();</span><br><span class="line">&#125;</span><br><span class="line">Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">System.out.println(<span class="string">"移除完成后List的数量："</span>+list.size());</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; <span class="number">1000</span>;j++)&#123;</span><br><span class="line">                list.add(j*<span class="number">10</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.start();</span><br><span class="line">&#125;</span><br><span class="line">Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">System.out.println(<span class="string">"第二次添加完成后List的数量："</span>+list.size());</span><br></pre></td></tr></table></figure></p>
+<p>输出的结果是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一次添加完成后list的数量：10000</span><br><span class="line">移除完成后List的数量：393</span><br><span class="line">第二次添加完成后List的数量：9319</span><br></pre></td></tr></table></figure></p>
+<p>而我们期望的结果是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一次添加完成后list的数量：10000</span><br><span class="line">移除完成后List的数量：0</span><br><span class="line">第二次添加完成后List的数量：10000</span><br></pre></td></tr></table></figure></p>
+<p>这就是因为ArrayList没有加同步锁导致的，下面再来一段Vector的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> List&lt;Integer&gt; list = <span class="keyword">new</span> Vector&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">10000</span>;i++)&#123;</span><br><span class="line">    list.add(i);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(<span class="string">"第一次添加完成后list的数量："</span>+list.size());</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; <span class="number">1000</span>;j++)&#123;</span><br><span class="line">                list.remove(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.start();</span><br><span class="line">&#125;</span><br><span class="line">Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">System.out.println(<span class="string">"移除完成后List的数量："</span>+list.size());</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; <span class="number">1000</span>;j++)&#123;</span><br><span class="line">                list.add(j*<span class="number">10</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.start();</span><br><span class="line">&#125;</span><br><span class="line">Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">System.out.println(<span class="string">"第二次添加完成后List的数量："</span>+list.size());</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一次添加完成后list的数量：10000</span><br><span class="line">移除完成后List的数量：0</span><br><span class="line">第二次添加完成后List的数量：10000</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -439,7 +458,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://GageChan.com/2018/03/26/hello-world/" title="Hello World">http://GageChan.com/2018/03/26/hello-world/</a>
+    <a href="http://GageChan.com/2018/03/27/为什么说ArrayList线程不安全/" title="为什么说ArrayList线程不安全">http://GageChan.com/2018/03/27/为什么说ArrayList线程不安全/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -452,6 +471,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
 
       
       
@@ -461,15 +486,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/03/26/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/27/为什么说ArrayList线程不安全/" rel="prev" title="为什么说ArrayList线程不安全">
-                为什么说ArrayList线程不安全 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -634,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概要介绍"><span class="nav-number">1.</span> <span class="nav-text">概要介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举例："><span class="nav-number">2.</span> <span class="nav-text">举例：</span></a></li></ol></div>
             
 
           </div>
