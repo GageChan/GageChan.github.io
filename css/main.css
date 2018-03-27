@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff4f91;
+  background: #fff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2871,12 +2871,6 @@ body {
   width: 300px;
   border-radius: 5px;
 }
-@media (max-width: 767px) {
-  .post-body .highlight {
-    width: 100%;
-    padding: 0;
-  }
-}
 .headband {
   height: 0;
 }
@@ -2916,12 +2910,6 @@ body {
     margin: 20px;
     padding: 5px;
     border-radius: 5px;
-  }
-}
-@media (max-width: 767px) {
-  .post-body .highlight {
-    width: 124%;
-    padding: 0;
   }
 }
 .post-copyright {
