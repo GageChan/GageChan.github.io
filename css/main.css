@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff42d6;
+  background: #533eff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2929,7 +2929,7 @@ body {
   color: #555;
 }
 .sidebar {
-  background: #222;
+  background: #fff;
 }
 .pagination .page-number.current {
   color: #555;
@@ -2962,6 +2962,12 @@ body {
 .brand:hover,
 .btn {
   color: #222;
+}
+.site-author-image {
+  border: none;
+}
+.site-author-name {
+  color: #000;
 }
 @-moz-keyframes colorChange {
   0%, 100% {
