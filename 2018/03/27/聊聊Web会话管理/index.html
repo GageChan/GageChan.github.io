@@ -81,12 +81,12 @@
 <meta name="keywords" content="会话管理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="聊聊Web会话管理">
-<meta property="og:url" content="http://GageChan.com/2018/03/26/聊聊Web会话管理/index.html">
+<meta property="og:url" content="http://GageChan.com/2018/03/27/聊聊Web会话管理/index.html">
 <meta property="og:site_name" content="GageChan&#39;s blog">
 <meta property="og:description" content="Web刚刚兴起的时候，服务器只提供一些简单的HTML页面，用户打开网址去浏览。并不需要记住每次请求是谁发来的，每次请求对于服务器来讲都是全新的。既然是浏览，服务器为什么要记住谁在这一段时间里浏览了什么呢？但是好日子没维持多久，很快大家都不满足于静态的HTML页面了，交互式的web应用兴起，尤其是论坛，在线购物等网站。必须管理会话，必须记住那些人登陆系统，哪些人在购物车放入商品，也就是说必须要把每个">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p6eadirxx.bkt.clouddn.com/session%E6%B5%81%E7%A8%8B.png">
-<meta property="og:updated_time" content="2018-04-02T11:19:37.044Z">
+<meta property="og:updated_time" content="2018-04-02T11:24:03.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聊聊Web会话管理">
 <meta name="twitter:description" content="Web刚刚兴起的时候，服务器只提供一些简单的HTML页面，用户打开网址去浏览。并不需要记住每次请求是谁发来的，每次请求对于服务器来讲都是全新的。既然是浏览，服务器为什么要记住谁在这一段时间里浏览了什么呢？但是好日子没维持多久，很快大家都不满足于静态的HTML页面了，交互式的web应用兴起，尤其是论坛，在线购物等网站。必须管理会话，必须记住那些人登陆系统，哪些人在购物车放入商品，也就是说必须要把每个">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://GageChan.com/2018/03/26/聊聊Web会话管理/"/>
+  <link rel="canonical" href="http://GageChan.com/2018/03/27/聊聊Web会话管理/"/>
 
 
 
@@ -301,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://GageChan.com/2018/03/26/聊聊Web会话管理/">
+    <link itemprop="mainEntityOfPage" href="http://GageChan.com/2018/03/27/聊聊Web会话管理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="GageChan">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-26T18:48:15+08:00">
-                2018-03-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T18:48:15+08:00">
+                2018-03-27
               </time>
             
 
@@ -372,8 +372,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/03/26/聊聊Web会话管理/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/03/26/聊聊Web会话管理/" itemprop="commentsCount"></span>
+                <a href="/2018/03/27/聊聊Web会话管理/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/03/27/聊聊Web会话管理/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -397,7 +397,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,111
+                  3,103
                 </span>
               
 
@@ -439,6 +439,8 @@
 <li>基于server端session的管理方式。</li>
 <li>基于cookie的管理方式。</li>
 <li>基于token的管理方式。<h3 id="session和cookie"><a href="#session和cookie" class="headerlink" title="session和cookie"></a>session和cookie</h3>在讲解着三种方式之前，先科普一下几个知识。</li>
+</ol>
+<ul>
 <li>由于http是无状态的协议，所以服务端需要记录用户的登陆状态时，就需要某种机制来识别具体的用户，这个机制就是session，session是保存在服务端的，有一个唯一标识。在大型的网站，一般会有专门的Session服务器集群，这个时候 Session 信息都是放在内存的。</li>
 <li>思考一下服务端如何识别特定的客户？这个时候Cookie就登场了。每次HTTP请求的时候，客户端都会发送相应的Cookie信息到服务端。 实际上大多数的应用都是用 Cookie 来实现Session跟踪的，第一次创建Session的时候，服务端会在HTTP协议中告诉客户端， 需要在 Cookie 里面记录一个Session ID，以后每次请求把这个会话ID发送到服务器，我就知道你是谁了。 有人问，如果客户端的浏览器禁用了 Cookie 怎么办？一般这种情况下，会使用一种叫做URL重写的技术来进行会话跟踪， 即每次HTTP交互，URL后面都会被附加上一个诸如 sid=xxxxx 这样的参数，服务端据此来识别用户。</li>
 <li>Cookie其实还可以用在一些方便用户的场景下，设想你某次登陆过一个网站，下次登录的时候不想再次输入账号了，怎么办？ 这个信息可以写到Cookie里面，访问网站的时候，网站页面的脚本可以读取这个信息，就自动帮你把用户名给填了，能够方便一下用户。 这也是Cookie名称的由来，给用户的一点甜头。<br>所以，总结一下：</li>
@@ -447,8 +449,6 @@
 <li>session 的运行依赖 session id，而 session id 是存在cookie中的，也就是说，如果浏览器禁用了cookie， 同时 session 也会失效（但是可以通过其它方式实现，比如在 url 中传递 session_id）</li>
 <li>session 可以放在 文件、数据库、或内存中都可以。</li>
 <li>用户验证这种场合一般会用 session 因此，维持一个会话的核心就是客户端的唯一标识，即 session id<h3 id="基于服务端的session"><a href="#基于服务端的session" class="headerlink" title="基于服务端的session"></a>基于服务端的session</h3>在早期web应用中，通常使用服务端session来管理用户的会话。</li>
-</ol>
-<ul>
 <li>服务端session是用户第一次访问应用时，服务器就会创建的对象，代表用户的一次会话过程，可以用来存放数据。 服务器为每一个session都分配一个唯一的sessionid，以保证每个用户都有一个不同的session对象。</li>
 <li>服务器在创建完session后，会把sessionid通过cookie返回给用户所在的浏览器，这样当用户第二次及以后向服务器发送请求的时候， 就会通过cookie把sessionid传回给服务器，以便服务器能够根据sessionid找到与该用户对应的session对象。</li>
 <li>session通常有失效时间的设定，比如2个小时。当失效时间到，服务器会销毁之前的session，并创建新的session返回给用户。 但是只要用户在失效时间内，有发送新的请求给服务器，通常服务器都会把他对应的session的失效时间根据当前的请求时间再延长2个小时。</li>
@@ -489,7 +489,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://GageChan.com/2018/03/26/聊聊Web会话管理/" title="聊聊Web会话管理">http://GageChan.com/2018/03/26/聊聊Web会话管理/</a>
+    <a href="http://GageChan.com/2018/03/27/聊聊Web会话管理/" title="聊聊Web会话管理">http://GageChan.com/2018/03/27/聊聊Web会话管理/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -517,14 +517,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/03/26/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/26/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/27/为什么说ArrayList线程不安全/" rel="prev" title="为什么说ArrayList线程不安全">
+                为什么说ArrayList线程不安全 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
