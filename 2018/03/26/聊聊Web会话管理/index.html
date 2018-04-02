@@ -86,7 +86,7 @@
 <meta property="og:description" content="Web刚刚兴起的时候，服务器只提供一些简单的HTML页面，用户打开网址去浏览。并不需要记住每次请求是谁发来的，每次请求对于服务器来讲都是全新的。既然是浏览，服务器为什么要记住谁在这一段时间里浏览了什么呢？但是好日子没维持多久，很快大家都不满足于静态的HTML页面了，交互式的web应用兴起，尤其是论坛，在线购物等网站。必须管理会话，必须记住那些人登陆系统，哪些人在购物车放入商品，也就是说必须要把每个">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p6eadirxx.bkt.clouddn.com/session%E6%B5%81%E7%A8%8B.png">
-<meta property="og:updated_time" content="2018-04-02T11:18:32.187Z">
+<meta property="og:updated_time" content="2018-04-02T11:19:37.044Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聊聊Web会话管理">
 <meta name="twitter:description" content="Web刚刚兴起的时候，服务器只提供一些简单的HTML页面，用户打开网址去浏览。并不需要记住每次请求是谁发来的，每次请求对于服务器来讲都是全新的。既然是浏览，服务器为什么要记住谁在这一段时间里浏览了什么呢？但是好日子没维持多久，很快大家都不满足于静态的HTML页面了，交互式的web应用兴起，尤其是论坛，在线购物等网站。必须管理会话，必须记住那些人登陆系统，哪些人在购物车放入商品，也就是说必须要把每个">
@@ -397,7 +397,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,112
+                  3,111
                 </span>
               
 
@@ -467,7 +467,7 @@
 </ol>
 <ul>
 <li>有效存储token，得保证每次调接口的时候都能从同一个位置拿到同一个token；</li>
-<li>每次调接口的的代码里都得把token加到header或者接口地址里面。<br>这种方式同样适用于网页应用，token可以存于localStorage或者sessionStorage里面，然后每发ajax请求的时候， 都把token拿出来放到ajax请求的header里即可。不过如果是非接口的请求，比如直接通过点击链接请求一个页面这种， 是无法自动带上token的。所以这种方式也仅限于走纯接口的web应用。<h3 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h3>现在SPA应用，前后端完全分离，基于API接口的应用越来越多，这时候基于token的认证就是最好的选择方式了。 好在这个方式的技术其实早就有很多实现了，而且还有现成的标准可用，这个标准就是JWT(json-web-token)。<br>JWT本身并没有做任何技术实现，它只是定义了token-based的管理方式该如何实现， 它规定了token的应该包含的标准内容以及token的生成过程和方法。目前实现了这个标准的技术已经有非常多。<br>官方网站：[1]: <a href="https://jwt.io/#libraries-io" target="_blank" rel="noopener">https://jwt.io/#libraries-io</a></li>
+<li>每次调接口的的代码里都得把token加到header或者接口地址里面。<br>这种方式同样适用于网页应用，token可以存于localStorage或者sessionStorage里面，然后每发ajax请求的时候， 都把token拿出来放到ajax请求的header里即可。不过如果是非接口的请求，比如直接通过点击链接请求一个页面这种， 是无法自动带上token的。所以这种方式也仅限于走纯接口的web应用。<h3 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h3>现在SPA应用，前后端完全分离，基于API接口的应用越来越多，这时候基于token的认证就是最好的选择方式了。 好在这个方式的技术其实早就有很多实现了，而且还有现成的标准可用，这个标准就是JWT(json-web-token)。<br>JWT本身并没有做任何技术实现，它只是定义了token-based的管理方式该如何实现， 它规定了token的应该包含的标准内容以及token的生成过程和方法。目前实现了这个标准的技术已经有非常多。<br>官方网站: <a href="https://jwt.io/#libraries-io" target="_blank" rel="noopener">https://jwt.io/#libraries-io</a></li>
 </ul>
 
       
